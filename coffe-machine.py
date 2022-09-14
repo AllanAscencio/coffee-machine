@@ -118,3 +118,71 @@ def check_transaction():
             make_coffee()
         else:
             print("Sorry that's not enough money. Money refunded.")
+
+
+
+"""Check if enough resources to make the coffee"""
+
+
+def check():
+    if user_choice == 'espresso':
+        if list(resources.values())[0] < 50:
+            print("Not enough water")
+            return 1
+        elif list(resources.values())[2] < 18:
+            print("Not enough coffee")
+            return 1
+    elif user_choice == 'latte':
+        if list(resources.values())[0] < 200:
+            print("Not enough water")
+            return 1
+        elif list(resources.values())[1] < 150:
+            print("Not enough milk")
+            return 1
+        elif list(resources.values())[2] < 24:
+            print("Not enough coffee")
+            return 1
+    elif user_choice == 'cappuccino':
+        if list(resources.values())[0] < 250:
+            print("Not enough water")
+            return 1
+        elif list(resources.values())[1] < 100:
+            print("Not enough milk")
+            return 1
+        elif list(resources.values())[2] < 24:
+            print("Not enough coffee")
+            return 1
+
+
+off = False
+inserted_coins = 0
+report = resources
+
+"""RUN OF THE WHOLE PROGRAM"""
+
+while not off:
+    user_choice = input("What would like? (espresso/latte/cappuccino)\nFor Admin Users write 'off' to refill the "
+                        "machine or 'report' to print a report:\n").lower()
+    if user_choice == 'off':
+        break
+    elif user_choice == 'espresso':
+        if check() == 1:
+            continue
+        else:
+            process_coins()
+            check_transaction()
+    elif user_choice == 'latte':
+        if check() == 1:
+            continue
+        else:
+            process_coins()
+            check_transaction()
+    elif user_choice == 'cappuccino':
+        if check() == 1:
+            continue
+        else:
+            process_coins()
+            check_transaction()
+    elif user_choice == 'report':
+        for key, value in resources.items():
+            print(key, ':', value)
