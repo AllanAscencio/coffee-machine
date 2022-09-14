@@ -68,3 +68,53 @@ def make_coffee():
 
     elif user_choice == 'report':
         print(report)
+
+"""PROCESS COINS"""
+
+
+def process_coins():
+    global inserted_coins
+    print("Please insert coins.")
+    quarters = float(input("How many quarters?: "))
+    total_quarters = quarters * 0.25
+    dimes = float(input("How many dimes?: "))
+    total_dimes = dimes * 0.10
+    nickles = float(input("How many nickles?: "))
+    total_nickles = nickles * 0.05
+    pennies = float(input("How many pennies?: "))
+    total_pennies = pennies * 0.01
+    money_gathered = total_quarters + total_dimes + total_nickles + total_pennies
+    inserted_coins = money_gathered
+
+
+"""CHECK IF TRANSACTION IS SUCCESSFUL"""
+
+
+def check_transaction():
+    if user_choice == 'espresso':
+        if inserted_coins == 1.5:
+            make_coffee()
+        elif inserted_coins > 1.5:
+            change = inserted_coins - 1.5
+            print(f"Here is ${change} dollars in change")
+            make_coffee()
+        else:
+            print("Sorry that's not enough money. Money refunded.")
+    elif user_choice == 'latte':
+        if inserted_coins == 2.5:
+            make_coffee()
+        elif inserted_coins > 2.5:
+            change = inserted_coins - 2.5
+            print(f"Here is ${change} dollars in change")
+            make_coffee()
+        else:
+            print("Sorry that's not enough money. Money refunded.")
+    elif user_choice == 'cappuccino':
+        if inserted_coins == 3.0:
+            make_coffee()
+        elif inserted_coins > 3.0:
+            change = inserted_coins - 3.0
+            print(f"Here is ${change} dollars in change")
+            make_coffee()
+        else:
+            print("Sorry that's not enough money. Money refunded.")
